@@ -15,14 +15,16 @@ let TasksService = class TasksService {
         this.tasks = [];
     }
     deleteTask(id) {
-        const index = this.tasks.findIndex(t => t.id === id);
-        if (index > -1) {
-            this.tasks.splice(index, 1);
-        }
+        const found = this.getTaskById(id);
+        this.tasks = this.tasks.filter(t => t !== found);
     }
     ;
     getTaskById(id) {
-        return this.tasks.filter(t => t.id === id)[0];
+        const found = this.tasks.filter(t => t.id === id)[0];
+        if (!found) {
+            throw new common_1.NotFoundException(`Task with id ${id} is not found`);
+        }
+        return found;
     }
     getTasksWithFilters(filterDto) {
         const { status, search } = filterDto;
@@ -54,7 +56,8 @@ let TasksService = class TasksService {
         this.tasks.push(task);
         return task;
     }
-    updateTaskStatus(id, status) {
+    updateTaskStatus(id, updateTaskDto) {
+        const { status } = updateTaskDto;
         const task = this.getTaskById(id);
         task.status = status;
         return task;
