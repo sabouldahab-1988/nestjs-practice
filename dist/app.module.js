@@ -14,7 +14,8 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [tasks_module_1.TasksModule, typeorm_1.TypeOrmModule.forRoot({
+        imports: [tasks_module_1.TasksModule,
+            typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'localhost',
                 port: 5432,

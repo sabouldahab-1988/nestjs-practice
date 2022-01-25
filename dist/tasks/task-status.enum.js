@@ -7,4 +7,4 @@ var TaskStatus;
     TaskStatus["IN_PROGRESS"] = "IN_PROGRESS";
     TaskStatus["DONE"] = "DONE";
 })(TaskStatus = exports.TaskStatus || (exports.TaskStatus = {}));
-//# sourceMappingURL=task.model.js.map
+//# sourceMappingURL=task-status.enum.js.map
